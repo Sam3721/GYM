@@ -4,28 +4,43 @@
  */
 package logica;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
  * @author yerky vargas
  */
 public class RutinaMasa extends Rutina {
-     public List<String> crearRutinaExtendida() {
-        List<String> rutina = crearRutina();
-        // Agregar más ejercicios de peso
-        rutina.add("Press militar 3X10");
-        rutina.add("Remo con barra 4X8");
-        rutina.add("Curl de bíceps 3X12");
-        rutina.add("Fondos en paralelas 3X10");
-        rutina.add("Elevaciones laterales 3X12");
+    
+   @Override
+   public List<String> crearRutina() {
+        List<String> rutina = new ArrayList();
+        rutina.add("Jalón dorsal abierto 4X12");
+        rutina.add("Press banca 3X8");
+        rutina.add("Leg extension 4X12");
+        rutina.add("Curl femoral 4X8");
+        
         return rutina;
+        
+        }
+   
+   @Override
+          public void mostrarRutina(List<String> rutina) {
+        Collections.shuffle(rutina);
+
+       
+        int contador = 0;
+        for (String elemento : rutina) {
+            System.out.print(elemento + " ");
+            contador++;
+            
+            if (contador % 5 == 0) {
+                System.out.println();
+            }
+        }
     }
 
-    public static void main(String[] args) {
-        RutinaMasa rutinaMasa = new RutinaMasa();
-        List<String> rutinaExtendida = rutinaMasa.crearRutinaExtendida();
-        rutinaMasa.mostrarRutina(rutinaExtendida);
-    }
+    
 }

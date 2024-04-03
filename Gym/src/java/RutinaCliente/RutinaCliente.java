@@ -6,6 +6,10 @@ package RutinaCliente;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Cliente;
 import logica.Rutina;
+import logica.RutinaFuerza;
+import logica.RutinaMasa;
+import logica.RutinaPeso;
 /**
  *
  * @author yerky vargas
@@ -21,11 +28,12 @@ import logica.Rutina;
 public class RutinaCliente extends HttpServlet {
     
     public static Rutina rut;
-    public static void liskov(Rutina r) {
-        
-        
+    public static void liskov(Rutina r, List<String> rutina) {
+        rutina= r.crearRutina(); 
+        r.mostrarRutina(rutina);
        rut=r;
     }
+    private List<String> rutina;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,8 +46,27 @@ public class RutinaCliente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        rutina= new ArrayList<>();
         Cliente cliente=new Cliente();
         response.setContentType("text/html;charset=UTF-8");
+        
+        if (null != request.getParameter("objetivo")) switch (request.getParameter("objetivo")) {
+            case "1":
+                RutinaMasa rutinaMasa= new RutinaMasa();
+                liskov(rutinaMasa, rutina);
+                break;
+            case "2":
+                RutinaPeso rutinaPeso= new RutinaPeso();
+                liskov(rutinaPeso, rutina);
+                break;
+            case "3":
+                RutinaFuerza rutinaFuerza= new RutinaFuerza();
+                liskov(rutinaFuerza, rutina);
+                break;
+            default:
+                break;
+        }
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

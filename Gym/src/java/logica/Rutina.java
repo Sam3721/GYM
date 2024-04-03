@@ -14,34 +14,18 @@ import java.util.List;
  */
 public class Rutina {
 
-    public static void main(String[] args) {
-    
-    
-        }
-        public static List<String> crearRutina() {
+        public List<String> crearRutina() {
         List<String> rutina = new ArrayList<>();
-        rutina.add("Jalón dorsal abierto 4X12");
-        rutina.add("Press banca 3X8");
-        rutina.add("Leg extension 4X12");
-        rutina.add("Curl femoral 4X8");
         
         return rutina;
         
         }
         
-       public static void mostrarRutina(List<String> rutina) {
+       public void mostrarRutina(List<String> rutina) {
         Collections.shuffle(rutina);
 
        
-        int contador = 0;
-        for (String elemento : rutina) {
-            System.out.print(elemento + " ");
-            contador++;
-            
-            if (contador % 5 == 0) {
-                System.out.println();
-            }
-        }
+       
     }
 }
 
