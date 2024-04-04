@@ -28,7 +28,6 @@ public class RutinaCliente extends HttpServlet {
     public static Rutina rut;
     public static void liskov(Rutina r) {
         r.crearRutina();
-        r.mostrarRutina(rutina);
         rut=r;
     }
     /**
@@ -96,6 +95,7 @@ public class RutinaCliente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"CSS.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>Servlet RutinaCliente</title>");            
             out.println("</head>");
             out.println("<body>");
